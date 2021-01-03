@@ -64,23 +64,26 @@ main(int argc, char **argv) {
     int displayInterval=1;
 
     if (argc>4) {
-	PrintUsage(argv[0]);
-	return -1;
+	    PrintUsage(argv[0]);
+	    return -1;
     } else if (argc==4) {
-	seed = atoi(argv[3]);
+	    seed = atoi(argv[3]);
     }
+
     if (argc>2) {
       displayInterval=atoi(argv[2]);
     }
+
     if (argc>1) {
-	numPasses = atoi(argv[1]);
+	    numPasses = atoi(argv[1]);
     }
 
-    World fate(numPasses,seed);
+
+    World fate(numPasses, seed);
 
     fate.mainLoop(displayInterval);
 
-    PrintMyID("86701000");
+    PrintMyID("108703014");
     return 0;
     
 }
