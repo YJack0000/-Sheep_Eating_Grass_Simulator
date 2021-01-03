@@ -27,8 +27,8 @@ extern "C" {
 
 using namespace std;
 #include <iostream>
-#include "AnsiPrint.h"
-#include "World.h"
+#include "../header/AnsiPrint.h"
+#include "../header/World.h"
 
 /**
  * Print my id 

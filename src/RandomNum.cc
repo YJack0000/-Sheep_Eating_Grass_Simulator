@@ -19,7 +19,7 @@
  * */
 
 #include <stdlib.h>
-#include "RandomNum.h"
+#include "../header/RandomNum.h"
 
 RandomNum::RandomNum(int seed) {
 

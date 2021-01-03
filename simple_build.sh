@@ -1,0 +1,1 @@
+g++ -std=c++11 src/ALifeTest.cc src/RandomNum.cc src/Goats.cc src/Grasses.cc  src/World.cc -o ALifeTest
