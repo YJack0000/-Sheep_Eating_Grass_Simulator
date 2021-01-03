@@ -14,8 +14,6 @@ class Creature{
         virtual bool isGonnaDie();
 
         virtual bool canHaveBaby();
-
-    protected:
         
         int life;
 
