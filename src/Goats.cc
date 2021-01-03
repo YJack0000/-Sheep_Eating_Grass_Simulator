@@ -18,8 +18,8 @@ bool Goats::pregnant(std::pair<int, int> pos){
     return goats[pos].canHaveBaby();
 }
 
-bool older(std::pair<int, int> pos){
-    goats[pos].getOneDayOlder();
+bool Goats::older(std::pair<int, int> pos){
+    goats[pos].increaseAge();
     goats[pos].changeLifePoint(-1);
     return !(goats[pos].isGonnaDie());
 }

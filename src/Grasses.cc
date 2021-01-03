@@ -17,8 +17,8 @@ bool Grasses::pregnant(std::pair<int, int> pos){
     return grasses[pos].canHaveBaby();
 }
 
-bool older(std::pair<int, int> pos){
-    grasses[pos].getOneDayOlder();
+bool Grasses::older(std::pair<int, int> pos){
+    grasses[pos].increaseAge();
     return !(grasses[pos].isGonnaDie());
 }
 

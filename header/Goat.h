@@ -20,10 +20,6 @@ class Goat : public Creature{
             return (life>=50) && (life<=55);
         }
 
-        void getOneDayOlder(){
-            life += 1;
-        }
-
         void changeLifePoint(int k){
             life_point += k;
         }

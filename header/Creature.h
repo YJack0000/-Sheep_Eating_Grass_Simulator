@@ -3,15 +3,17 @@
 
 class Creature{
 
+    public:
+    
+        void increaseAge(){
+            life += 1;
+        }
+
     protected:
 
         virtual bool isGonnaDie();
 
         virtual bool canHaveBaby();
-
-        void increaseAge(){
-            life += 1;
-        }
 
     protected:
         
