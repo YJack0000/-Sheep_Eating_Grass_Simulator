@@ -6,8 +6,8 @@ World::World(int num_pass, int seed) : _rand_(seed), goats(seed), grasses(seed){
 
 void World::mainLoop(int interval){
     while(remain_pass--){
-        for(int i=0; i<35; i++){
-        for(int j=0; j<20; j++){
+        for(int i=0; i<20; i++){
+        for(int j=0; j<35; j++){
             std::pair<int, int> pos = std::make_pair(i, j);
             if(goats.isGoat(pos)){//goat
                 this->goatPass( std::make_pair(i, j) );
@@ -16,26 +16,34 @@ void World::mainLoop(int interval){
             }
         }
         }
+        goats.moveSuccess();
         if(remain_pass % interval == 0) this->print();
     }
 }
 
 void World::print(){
+    std::cout << "  ";
     for(int i=0; i<35; i++)
         std::cout << i%10 << " ";
+    std::cout << std::endl;
     for(int i=0; i<20; i++){
         std::cout << i%10 << " ";
         for(int j=0; j<35; j++){
             std::pair<int, int> pos = std::make_pair(i, j);
             if(goats.isGoat(pos)){//goat
-                std::cout << 'X' ;
+                std::cout << 'X';
             }else if(grasses.isGrass(pos)){//grass
-                std::cout << 'I' ;
+                std::cout << 'I';
+            }else{
+                std::cout << ' ' ;
             }
             std::cout << ' ';
         }
         std::cout << std::endl;
     }
+    for(int i=0; i<70; i++)
+        std::cout << "-" ;
+    std::cout << std::endl;
 }
 
 bool World::isOutOfRange(std::pair<int ,int> pos){
@@ -54,23 +62,27 @@ std::pair<int, int> World::generateNewPos(std::pair<int, int> pos){
 
 void World::goatPass(std::pair<int, int> this_pos){
     if( !goats.older(this_pos)){
+        //std::cout << "Goat on " << this_pos.first << " " << this_pos.second << "is dead! " << std::endl;
         goats.die(this_pos);
         return ;
     }
 
     std::pair<int, int> to_pos = this->generateNewPos(this_pos);
 
-    if( goats.pregnant(this_pos) ){
-        if(grasses.isGrass(to_pos)){//pregnant goat eat grass
-            goats.eat(this_pos);
-            grasses.die(to_pos);
-        }
+    if( grasses.isGrass(to_pos) ){//pregnant goat eat grass
+        //std::cout << "Grasses detected! " << std::endl;
+        goats.eat(this_pos);
+        grasses.die(to_pos);
+    }
 
+    if( goats.pregnant(this_pos) ){
         if(this->check(to_pos)){//pregnant goat give birth to new baby
+            //std::cout << "Goat on " << this_pos.first << " " << this_pos.second << " give birth to " << to_pos.first << " " << to_pos.second << std::endl;
             goats.produce(to_pos);
         }
     }else{
         if(this->check(to_pos)){
+            //std::cout << "Goat on " << this_pos.first << " " << this_pos.second << " move to " << to_pos.first << " " << to_pos.second << std::endl;
             goats.move(this_pos, to_pos);
         }
     }

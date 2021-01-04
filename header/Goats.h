@@ -26,9 +26,11 @@ class Goats{
 
         void die(std::pair<int, int>);
 
+        void moveSuccess();
+
     private:
 
-        std::map<std::pair<int, int>, Goat> goats;
+        std::map<std::pair<int, int>, Goat> goats, tmp_goats;
         RandomNum _rand_;
 
 };

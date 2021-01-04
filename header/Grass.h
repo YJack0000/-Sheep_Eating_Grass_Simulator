@@ -12,7 +12,7 @@ class Grass : public Creature{
         }
 
         bool isGonnaDie(){
-            return (life == 6);
+            return (life >= 6);
         }
 
         bool canHaveBaby(){

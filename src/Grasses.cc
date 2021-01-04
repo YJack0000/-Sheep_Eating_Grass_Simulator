@@ -1,12 +1,14 @@
 #include "../header/Grasses.h"
 
 Grasses::Grasses(int seed) : _rand_(seed){
-    std::pair<int, int> pos(_rand_.getRandomNum(0, 20-1), _rand_.getRandomNum(0, 35-1));
-    while(grasses.count(pos)){
-        pos = std::make_pair(_rand_.getRandomNum(0, 20-1), _rand_.getRandomNum(0, 35-1));
-    }
+    for(int i=0; i<10; i++){
+        std::pair<int, int> pos(_rand_.getRandomNum(0, 20-1), _rand_.getRandomNum(0, 35-1));
+        while(grasses.count(pos)){
+            pos = std::make_pair(_rand_.getRandomNum(0, 20-1), _rand_.getRandomNum(0, 35-1));
+        }
 
-    grasses[pos] = Grass();
+        grasses[pos] = Grass();
+    }
 }
 
 bool Grasses::isGrass(std::pair<int, int> pos){

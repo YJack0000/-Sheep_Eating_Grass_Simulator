@@ -29,7 +29,7 @@ void Goats::eat(std::pair<int, int> pos){
 }
 
 void Goats::move(std::pair<int, int> from_pos, std::pair<int, int> to_pos){
-    goats[to_pos] = goats[from_pos];
+    tmp_goats[to_pos] = goats[from_pos];
     goats.erase(from_pos);
 }
 
@@ -39,4 +39,9 @@ void Goats::produce(std::pair<int, int> pos){
 
 void Goats::die(std::pair<int, int> pos){
     goats.erase(pos);
+}
+
+void Goats::moveSuccess(){
+    goats.insert(tmp_goats.begin(), tmp_goats.end());
+    tmp_goats.clear();
 }

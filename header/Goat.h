@@ -9,11 +9,11 @@ class Goat : public Creature{
 
         Goat(){
             life = 0;
-            life_point = 0;
+            life_point = 20;
         }
 
         bool isGonnaDie(){
-            return (life == 70) || (life_point == 0);
+            return (life >= 70) || (life_point <= 0);
         }
 
         bool canHaveBaby(){
